@@ -20,9 +20,9 @@ test.describe('HealthCheck Web App', () => {
     
     // Check navbar
     await expect(page.locator('text=HealthCheck').first()).toBeVisible();
-    await expect(page.locator('button:has-text("Calculators")')).toBeVisible();
-    await expect(page.locator('a:has-text("Health Check")')).toBeVisible();
-    await expect(page.locator('a:has-text("Pricing")')).toBeVisible();
+    await expect(page.locator('header button:has-text("Calculators")')).toBeVisible();
+    await expect(page.locator('header a:has-text("Health Check")')).toBeVisible();
+    await expect(page.locator('header a:has-text("Pricing")')).toBeVisible();
     
     // Check footer
     await expect(page.locator('text=© 2024 HealthCheck')).toBeVisible();
@@ -33,7 +33,7 @@ test.describe('HealthCheck Web App', () => {
     await page.goto(BASE_URL);
     
     // Click on Calculators dropdown
-    await page.locator('button:has-text("Calculators")').click();
+    await page.locator('header button:has-text("Calculators")').click();
     
     // Click on BMI link
     await page.locator('text=BMI').click();
@@ -49,7 +49,7 @@ test.describe('HealthCheck Web App', () => {
     await page.goto(BASE_URL);
     
     // Click on Calculators dropdown
-    await page.locator('button:has-text("Calculators")').click();
+    await page.locator('header button:has-text("Calculators")').click();
     
     // Click on Calories link
     await page.locator('text=Calories').click();
@@ -65,7 +65,7 @@ test.describe('HealthCheck Web App', () => {
     await page.goto(BASE_URL);
     
     // Click on Calculators dropdown
-    await page.locator('button:has-text("Calculators")').click();
+    await page.locator('header button:has-text("Calculators")').click();
     
     // Click on Macros link
     await page.locator('text=Macros').click();
@@ -108,8 +108,8 @@ test.describe('HealthCheck Web App', () => {
     // Check URL and content
     await expect(page).toHaveURL(`${BASE_URL}/pricing`);
     await expect(page.locator('h1')).toContainText('Choose Your Plan');
-    await expect(page.locator('text=Free')).toBeVisible();
-    await expect(page.locator('text=Pro')).toBeVisible();
+    await expect(page.locator('[data-slot="card-title"]:has-text("Free")')).toBeVisible();
+    await expect(page.locator('[data-slot="card-title"]:has-text("Pro")')).toBeVisible();
   });
 
   test('should navigate to Disclaimer page', async ({ page }) => {
