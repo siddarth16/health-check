@@ -1,4 +1,5 @@
 import { createMetadata } from "@/lib/seo";
+import { BMICalculator } from "@/components/calculators/bmi-calculator";
 
 export const metadata = createMetadata({
   title: "BMI Calculator",
@@ -22,7 +23,7 @@ export default function BMICalculatorPage() {
         </p>
       </div>
       
-      <div id="form-root" className="min-h-[50px] border-2 border-dashed border-muted-foreground/20 rounded-lg"></div>
+      <BMICalculator />
     </div>
   );
 }

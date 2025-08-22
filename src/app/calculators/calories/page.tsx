@@ -1,4 +1,5 @@
 import { createMetadata } from "@/lib/seo";
+import { CaloriesCalculator } from "@/components/calculators/calories-calculator";
 
 export const metadata = createMetadata({
   title: "Calorie (TDEE) Calculator",
@@ -22,7 +23,7 @@ export default function CalorieCalculatorPage() {
         </p>
       </div>
       
-      <div id="form-root" className="min-h-[50px] border-2 border-dashed border-muted-foreground/20 rounded-lg"></div>
+      <CaloriesCalculator />
     </div>
   );
 }
