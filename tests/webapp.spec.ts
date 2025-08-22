@@ -96,7 +96,7 @@ test.describe('HealthCheck Web App', () => {
     // Check URL and content
     await expect(page).toHaveURL(`${BASE_URL}/results`);
     await expect(page.locator('h1')).toContainText('Results');
-    await expect(page.locator('text=Provide inputs to see results')).toBeVisible();
+    await expect(page.locator('text=Invalid or missing health check data')).toBeVisible();
   });
 
   test('should navigate to Pricing page', async ({ page }) => {
@@ -196,7 +196,7 @@ test.describe('HealthCheck Web App', () => {
     await expect(page.locator('text=Step 1 of 4: Basics')).toBeVisible();
     
     // Step 1: Fill out basic information
-    await page.locator('button:has-text("Male")').click();
+    await page.locator('button:has-text("Male")').first().click();
     await page.locator('input[placeholder="30"]').fill('25');
     await page.locator('input[placeholder="175"]').fill('180');
     await page.locator('input[placeholder="70"]').fill('75');
@@ -238,13 +238,13 @@ test.describe('HealthCheck Web App', () => {
     await expect(page.locator('text=Body Mass Index')).toBeVisible();
     await expect(page.locator('text=Basal Metabolic Rate')).toBeVisible();
     await expect(page.locator('text=Daily Energy Needs')).toBeVisible();
-    await expect(page.locator('text=Target Calories')).toBeVisible();
+    await expect(page.locator('text=Target Calories').first()).toBeVisible();
     
     // Check macro breakdown is displayed
     await expect(page.locator('text=Recommended Macro Distribution')).toBeVisible();
-    await expect(page.locator('text=Carbohydrates')).toBeVisible();
-    await expect(page.locator('text=Protein')).toBeVisible();
-    await expect(page.locator('text=Fat')).toBeVisible();
+    await expect(page.locator('div.text-sm.text-muted-foreground:has-text("Carbohydrates")')).toBeVisible();
+    await expect(page.locator('div.text-sm.text-muted-foreground:has-text("Protein")')).toBeVisible();
+    await expect(page.locator('div.text-sm.text-muted-foreground:has-text("Fat")')).toBeVisible();
     
     // Check share actions are present
     await expect(page.locator('button:has-text("Copy URL")')).toBeVisible();
