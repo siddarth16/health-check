@@ -41,8 +41,8 @@ test.describe('HealthCheck Web App', () => {
     // Check URL and content
     await expect(page).toHaveURL(`${BASE_URL}/calculators/bmi`);
     await expect(page.locator('h1')).toContainText('BMI Calculator');
-    await expect(page.locator('text=Body Mass Index')).toBeVisible();
-    await expect(page.locator('#form-root')).toBeVisible();
+    await expect(page.locator('text=Height')).toBeVisible();
+    await expect(page.locator('text=Weight')).toBeVisible();
   });
 
   test('should navigate to Calories calculator page', async ({ page }) => {
@@ -57,8 +57,8 @@ test.describe('HealthCheck Web App', () => {
     // Check URL and content
     await expect(page).toHaveURL(`${BASE_URL}/calculators/calories`);
     await expect(page.locator('h1')).toContainText('Calorie (TDEE) Calculator');
-    await expect(page.locator('text=Total Daily Energy Expenditure')).toBeVisible();
-    await expect(page.locator('#form-root')).toBeVisible();
+    await expect(page.locator('text=Sex')).toBeVisible();
+    await expect(page.locator('text=Activity Level')).toBeVisible();
   });
 
   test('should navigate to Macros calculator page', async ({ page }) => {
@@ -73,8 +73,8 @@ test.describe('HealthCheck Web App', () => {
     // Check URL and content
     await expect(page).toHaveURL(`${BASE_URL}/calculators/macros`);
     await expect(page.locator('h1')).toContainText('Macro Calculator');
-    await expect(page.locator('text=Macronutrients')).toBeVisible();
-    await expect(page.locator('#form-root')).toBeVisible();
+    await expect(page.locator('text=Target Calories')).toBeVisible();
+    await expect(page.locator('text=Macro Distribution')).toBeVisible();
   });
 
   test('should navigate to Health Check page', async ({ page }) => {
@@ -148,17 +148,17 @@ test.describe('HealthCheck Web App', () => {
     await expect(canonicalLink).toHaveAttribute('href', /https:\/\/health-check.*\.vercel\.app\//);
   });
 
-  test('all calculator pages should have form-root placeholder', async ({ page }) => {
-    const calculatorPages = [
-      '/calculators/bmi',
-      '/calculators/calories', 
-      '/calculators/macros',
-      '/health-check'
+  test('all calculator pages should have functional forms', async ({ page }) => {
+    const calculatorTests = [
+      { path: '/calculators/bmi', selector: 'text=Height' },
+      { path: '/calculators/calories', selector: 'text=Activity Level' },
+      { path: '/calculators/macros', selector: 'text=Target Calories' },
+      { path: '/health-check', selector: '#form-root' }
     ];
 
-    for (const pagePath of calculatorPages) {
-      await page.goto(`${BASE_URL}${pagePath}`);
-      await expect(page.locator('#form-root')).toBeVisible();
+    for (const test of calculatorTests) {
+      await page.goto(`${BASE_URL}${test.path}`);
+      await expect(page.locator(test.selector)).toBeVisible();
     }
   });
 
