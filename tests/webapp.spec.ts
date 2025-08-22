@@ -41,8 +41,8 @@ test.describe('HealthCheck Web App', () => {
     // Check URL and content
     await expect(page).toHaveURL(`${BASE_URL}/calculators/bmi`);
     await expect(page.locator('h1')).toContainText('BMI Calculator');
-    await expect(page.locator('text=Height')).toBeVisible();
-    await expect(page.locator('text=Weight')).toBeVisible();
+    await expect(page.locator('label:has-text("Height")')).toBeVisible();
+    await expect(page.locator('label:has-text("Weight")')).toBeVisible();
   });
 
   test('should navigate to Calories calculator page', async ({ page }) => {
@@ -57,8 +57,8 @@ test.describe('HealthCheck Web App', () => {
     // Check URL and content
     await expect(page).toHaveURL(`${BASE_URL}/calculators/calories`);
     await expect(page.locator('h1')).toContainText('Calorie (TDEE) Calculator');
-    await expect(page.locator('text=Sex')).toBeVisible();
-    await expect(page.locator('text=Activity Level')).toBeVisible();
+    await expect(page.locator('label:has-text("Sex")')).toBeVisible();
+    await expect(page.locator('label:has-text("Activity Level")')).toBeVisible();
   });
 
   test('should navigate to Macros calculator page', async ({ page }) => {
@@ -150,9 +150,9 @@ test.describe('HealthCheck Web App', () => {
 
   test('all calculator pages should have functional forms', async ({ page }) => {
     const calculatorTests = [
-      { path: '/calculators/bmi', selector: 'text=Height' },
-      { path: '/calculators/calories', selector: 'text=Activity Level' },
-      { path: '/calculators/macros', selector: 'text=Target Calories' },
+      { path: '/calculators/bmi', selector: 'label:has-text("Height")' },
+      { path: '/calculators/calories', selector: 'label:has-text("Activity Level")' },
+      { path: '/calculators/macros', selector: 'label:has-text("Target Calories")' },
       { path: '/health-check', selector: '#form-root' }
     ];
 
