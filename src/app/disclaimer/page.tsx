@@ -34,12 +34,24 @@ export default function DisclaimerPage() {
 
           <div className="mt-8 space-y-6">
             <div>
-              <h3 className="text-lg font-semibold mb-2">Not Medical Advice</h3>
+              <h3 className="text-lg font-semibold mb-2">Medical Disclaimer</h3>
               <p className="text-muted-foreground">
                 The calculations and recommendations provided are general estimates 
                 and may not be appropriate for everyone. Individual health needs vary 
                 significantly based on medical history, current health conditions, 
-                medications, and other factors.
+                medications, age, pregnancy status, metabolic disorders, and other factors. 
+                These tools should never replace professional medical advice.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Calculator Limitations</h3>
+              <p className="text-muted-foreground">
+                Our calculators use established scientific formulas (such as the Mifflin-St Jeor 
+                equation for BMR) that provide reasonable estimates for most adults. However, 
+                these formulas may be less accurate for certain populations including athletes 
+                with high muscle mass, elderly individuals, those with metabolic conditions, 
+                or people taking medications that affect metabolism.
               </p>
             </div>
 
@@ -49,16 +61,20 @@ export default function DisclaimerPage() {
                 Before making any significant changes to your diet, exercise routine, 
                 or health regimen based on our calculators, please consult with 
                 qualified healthcare professionals, including your physician, 
-                registered dietitian, or certified fitness trainer.
+                registered dietitian, or certified fitness trainer. This is especially 
+                important if you have pre-existing health conditions, take medications, 
+                are pregnant or nursing, or have a history of eating disorders.
               </p>
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold mb-2">No Warranty</h3>
+              <h3 className="text-lg font-semibold mb-2">No Liability & Warranty</h3>
               <p className="text-muted-foreground">
-                While we strive for accuracy, we make no warranties about the 
-                completeness, reliability, or accuracy of the information provided. 
-                Use of our calculators is at your own risk.
+                While we strive for accuracy in our calculations and educational content, 
+                we make no warranties about the completeness, reliability, or accuracy 
+                of the information provided. HealthCheck, its creators, and affiliates 
+                are not liable for any damages or health issues that may result from 
+                using this information. Use of our calculators is at your own risk.
               </p>
             </div>
 
@@ -66,18 +82,46 @@ export default function DisclaimerPage() {
               <h3 className="text-lg font-semibold mb-2">Emergency Situations</h3>
               <p className="text-muted-foreground">
                 If you have a medical emergency, please contact your local emergency 
-                services immediately. Our calculators are not intended for emergency 
-                health situations.
+                services immediately (such as 911 in the US, 999 in the UK, or 112 in Europe). 
+                Our calculators are not intended for emergency health situations or 
+                acute medical conditions.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Special Populations</h3>
+              <p className="text-muted-foreground">
+                These calculators are designed for healthy adults aged 18-65. They may 
+                not be appropriate for children, adolescents, elderly individuals, 
+                pregnant or breastfeeding women, competitive athletes, or individuals 
+                with medical conditions such as diabetes, eating disorders, thyroid 
+                conditions, or other metabolic disorders.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Data Privacy</h3>
+              <p className="text-muted-foreground">
+                We do not store or transmit your personal health data entered into our 
+                calculators. All calculations are performed in your browser for privacy. 
+                However, we recommend not using these tools on shared or public computers 
+                if privacy is a concern.
               </p>
             </div>
           </div>
 
-          <div className="mt-8 p-4 bg-muted rounded-lg">
-            <p className="text-sm text-muted-foreground mb-0">
-              <strong>Remember:</strong> Your health is unique to you. These tools 
-              provide starting points for discussions with healthcare professionals 
-              who can provide personalized advice based on your complete health picture.
+          <div className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-lg dark:bg-amber-950/20 dark:border-amber-900">
+            <p className="text-sm text-amber-800 dark:text-amber-200 mb-0">
+              <strong>Important:</strong> Your health is unique to you. These tools 
+              provide educational starting points for discussions with healthcare professionals 
+              who can provide personalized advice based on your complete health picture, 
+              medical history, and individual circumstances. Never ignore professional 
+              medical advice or delay seeking treatment because of information from this website.
             </p>
+          </div>
+
+          <div className="mt-6 text-xs text-muted-foreground">
+            <p>Last updated: August 2024</p>
           </div>
         </CardContent>
       </Card>

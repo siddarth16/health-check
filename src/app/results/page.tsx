@@ -258,6 +258,14 @@ export default function ResultsPage({ searchParams }: ResultsPageProps) {
                 Individual needs may vary based on genetics, health conditions, medications, and other factors. 
                 Please consult with a healthcare professional or registered dietitian for personalized guidance.
               </p>
+              <p className="mt-3">
+                <a 
+                  href="/disclaimer" 
+                  className="text-amber-700 hover:text-amber-900 underline font-medium"
+                >
+                  Read our full medical disclaimer →
+                </a>
+              </p>
             </div>
           </CardContent>
         </Card>

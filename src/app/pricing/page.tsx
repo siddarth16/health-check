@@ -28,19 +28,19 @@ export default function PricingPage() {
     },
     {
       name: "Pro",
-      price: "$9",
+      price: "$12",
       period: "per month",
-      description: "Advanced tools and personalized recommendations",
+      description: "Advanced tools and personalized insights (launching October 2025)",
       features: [
         "All Free features",
-        "Advanced Calorie Calculator with activity tracking",
-        "Personalized Macro recommendations",
-        "Meal planning suggestions",
-        "Progress tracking and charts",
-        "Export data to PDF",
-        "Priority support",
+        "Advanced progress tracking & analytics",
+        "Personalized meal planning",
+        "Custom macro targets for specific goals",
+        "Body composition tracking",
+        "Export reports to PDF",
+        "Priority email support",
       ],
-      buttonText: "Coming Soon",
+      buttonText: "Join Waitlist (Oct 2025)",
       popular: true,
     },
   ];
@@ -52,7 +52,7 @@ export default function PricingPage() {
           Choose Your Plan
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Start with our free calculators or unlock advanced features with Pro
+          Start with our free calculators today. Pro features launching October 2025.
         </p>
       </div>
 
@@ -95,7 +95,10 @@ export default function PricingPage() {
       
       <div className="text-center mt-16">
         <p className="text-muted-foreground">
-          All plans include access to our health calculators and educational content.
+          All calculators are free forever. Pro features will add advanced tracking and personalization.
+        </p>
+        <p className="text-sm text-muted-foreground mt-2">
+          Want early access to Pro features? Join our waitlist when it opens in mid-2025.
         </p>
       </div>
     </div>
