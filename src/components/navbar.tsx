@@ -31,11 +31,21 @@ export function Navbar() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuItem disabled>BMI</DropdownMenuItem>
-              <DropdownMenuItem disabled>Calories</DropdownMenuItem>
-              <DropdownMenuItem disabled>Macros</DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/calculators/bmi">BMI</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/calculators/calories">Calories</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/calculators/macros">Macros</Link>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+          
+          <Link href="/health-check" className="text-sm font-medium hover:text-primary">
+            Health Check
+          </Link>
           
           <Link href="/pricing" className="text-sm font-medium hover:text-primary">
             Pricing
