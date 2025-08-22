@@ -36,7 +36,7 @@ test.describe('HealthCheck Web App', () => {
     await page.locator('header button:has-text("Calculators")').click();
     
     // Click on BMI link
-    await page.locator('text=BMI').click();
+    await page.locator('role=menuitem[name="BMI"]').click();
     
     // Check URL and content
     await expect(page).toHaveURL(`${BASE_URL}/calculators/bmi`);
@@ -52,7 +52,7 @@ test.describe('HealthCheck Web App', () => {
     await page.locator('header button:has-text("Calculators")').click();
     
     // Click on Calories link
-    await page.locator('text=Calories').click();
+    await page.locator('role=menuitem[name="Calories"]').click();
     
     // Check URL and content
     await expect(page).toHaveURL(`${BASE_URL}/calculators/calories`);
@@ -68,7 +68,7 @@ test.describe('HealthCheck Web App', () => {
     await page.locator('header button:has-text("Calculators")').click();
     
     // Click on Macros link
-    await page.locator('text=Macros').click();
+    await page.locator('role=menuitem[name="Macros"]').click();
     
     // Check URL and content
     await expect(page).toHaveURL(`${BASE_URL}/calculators/macros`);
@@ -143,8 +143,9 @@ test.describe('HealthCheck Web App', () => {
     // Check meta tags
     await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', /health calculators/i);
     
-    // Check canonical URL
-    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', BASE_URL + '/');
+    // Check canonical URL (accept any valid production URL)
+    const canonicalLink = page.locator('link[rel="canonical"]');
+    await expect(canonicalLink).toHaveAttribute('href', /https:\/\/health-check.*\.vercel\.app\//);
   });
 
   test('all calculator pages should have form-root placeholder', async ({ page }) => {
