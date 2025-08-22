@@ -87,7 +87,7 @@ test.describe('HealthCheck Web App', () => {
     await expect(page).toHaveURL(`${BASE_URL}/health-check`);
     await expect(page.locator('h1')).toContainText('Health Check');
     await expect(page.locator('text=comprehensive overview')).toBeVisible();
-    await expect(page.locator('#form-root')).toBeVisible();
+    await expect(page.locator('text=Health Check Assessment')).toBeVisible();
   });
 
   test('should navigate to Results page', async ({ page }) => {
@@ -153,7 +153,7 @@ test.describe('HealthCheck Web App', () => {
       { path: '/calculators/bmi', selector: 'label:has-text("Height")' },
       { path: '/calculators/calories', selector: 'label:has-text("Activity Level")' },
       { path: '/calculators/macros', selector: 'label:has-text("Target Calories")' },
-      { path: '/health-check', selector: '#form-root' }
+      { path: '/health-check', selector: 'text=Health Check Assessment' }
     ];
 
     for (const test of calculatorTests) {
@@ -185,5 +185,69 @@ test.describe('HealthCheck Web App', () => {
     );
     
     expect(hydrationErrors).toHaveLength(0);
+  });
+
+  test('should complete health-check flow and display results', async ({ page }) => {
+    // Navigate to health check page
+    await page.goto(`${BASE_URL}/health-check`);
+    
+    // Verify the form is visible
+    await expect(page.locator('text=Health Check Assessment')).toBeVisible();
+    await expect(page.locator('text=Step 1 of 4: Basics')).toBeVisible();
+    
+    // Step 1: Fill out basic information
+    await page.locator('button:has-text("Male")').click();
+    await page.locator('input[placeholder="30"]').fill('25');
+    await page.locator('input[placeholder="175"]').fill('180');
+    await page.locator('input[placeholder="70"]').fill('75');
+    
+    // Go to next step
+    await page.locator('button:has-text("Next")').click();
+    await expect(page.locator('text=Step 2 of 4: Activity')).toBeVisible();
+    
+    // Step 2: Select activity level
+    await page.locator('button:has-text("Moderately Active")').click();
+    
+    // Go to next step
+    await page.locator('button:has-text("Next")').click();
+    await expect(page.locator('text=Step 3 of 4: Goal')).toBeVisible();
+    
+    // Step 3: Select goal
+    await page.locator('button:has-text("Lose Weight")').click();
+    
+    // Go to review step
+    await page.locator('button:has-text("Next")').click();
+    await expect(page.locator('text=Step 4 of 4: Review')).toBeVisible();
+    
+    // Verify review information
+    await expect(page.locator('text=Sex: Male')).toBeVisible();
+    await expect(page.locator('text=Age: 25 years')).toBeVisible();
+    await expect(page.locator('text=Height: 180 cm')).toBeVisible();
+    
+    // Submit and navigate to results
+    await page.locator('button:has-text("Calculate Results")').click();
+    
+    // Should be redirected to results page with query params
+    await expect(page).toHaveURL(/\/results\?.*height=180.*weight=75.*age=25.*sex=male.*activityLevel=moderately_active.*goalType=lose/);
+    
+    // Verify results are displayed
+    await expect(page.locator('h1')).toContainText('Your Health Check Results');
+    await expect(page.locator('text=Male, 25 years old')).toBeVisible();
+    
+    // Check that metrics are calculated and displayed
+    await expect(page.locator('text=Body Mass Index')).toBeVisible();
+    await expect(page.locator('text=Basal Metabolic Rate')).toBeVisible();
+    await expect(page.locator('text=Daily Energy Needs')).toBeVisible();
+    await expect(page.locator('text=Target Calories')).toBeVisible();
+    
+    // Check macro breakdown is displayed
+    await expect(page.locator('text=Recommended Macro Distribution')).toBeVisible();
+    await expect(page.locator('text=Carbohydrates')).toBeVisible();
+    await expect(page.locator('text=Protein')).toBeVisible();
+    await expect(page.locator('text=Fat')).toBeVisible();
+    
+    // Check share actions are present
+    await expect(page.locator('button:has-text("Copy URL")')).toBeVisible();
+    await expect(page.locator('button:has-text("Print")')).toBeVisible();
   });
 });

@@ -1,4 +1,5 @@
 import { createMetadata } from "@/lib/seo";
+import { HealthCheckForm } from "@/components/health/HealthCheckForm";
 
 export const metadata = createMetadata({
   title: "Health Check",
@@ -21,7 +22,7 @@ export default function HealthCheckPage() {
         </p>
       </div>
       
-      <div id="form-root" className="min-h-[50px] border-2 border-dashed border-muted-foreground/20 rounded-lg"></div>
+      <HealthCheckForm />
     </div>
   );
 }
