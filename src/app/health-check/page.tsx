@@ -21,7 +21,7 @@ export default function HealthCheckPage() {
         </p>
       </div>
       
-      <div id="form-root"></div>
+      <div id="form-root" className="min-h-[50px] border-2 border-dashed border-muted-foreground/20 rounded-lg"></div>
     </div>
   );
 }

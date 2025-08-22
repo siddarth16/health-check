@@ -20,9 +20,9 @@ test.describe('HealthCheck Web App', () => {
     
     // Check navbar
     await expect(page.locator('text=HealthCheck').first()).toBeVisible();
-    await expect(page.locator('text=Calculators')).toBeVisible();
-    await expect(page.locator('text=Health Check')).toBeVisible();
-    await expect(page.locator('text=Pricing')).toBeVisible();
+    await expect(page.locator('button:has-text("Calculators")')).toBeVisible();
+    await expect(page.locator('a:has-text("Health Check")')).toBeVisible();
+    await expect(page.locator('a:has-text("Pricing")')).toBeVisible();
     
     // Check footer
     await expect(page.locator('text=© 2024 HealthCheck')).toBeVisible();
@@ -33,7 +33,7 @@ test.describe('HealthCheck Web App', () => {
     await page.goto(BASE_URL);
     
     // Click on Calculators dropdown
-    await page.locator('text=Calculators').click();
+    await page.locator('button:has-text("Calculators")').click();
     
     // Click on BMI link
     await page.locator('text=BMI').click();
@@ -49,7 +49,7 @@ test.describe('HealthCheck Web App', () => {
     await page.goto(BASE_URL);
     
     // Click on Calculators dropdown
-    await page.locator('text=Calculators').click();
+    await page.locator('button:has-text("Calculators")').click();
     
     // Click on Calories link
     await page.locator('text=Calories').click();
@@ -65,7 +65,7 @@ test.describe('HealthCheck Web App', () => {
     await page.goto(BASE_URL);
     
     // Click on Calculators dropdown
-    await page.locator('text=Calculators').click();
+    await page.locator('button:has-text("Calculators")').click();
     
     // Click on Macros link
     await page.locator('text=Macros').click();
@@ -81,7 +81,7 @@ test.describe('HealthCheck Web App', () => {
     await page.goto(BASE_URL);
     
     // Click on Health Check link
-    await page.locator('text=Health Check').click();
+    await page.locator('a:has-text("Health Check")').click();
     
     // Check URL and content
     await expect(page).toHaveURL(`${BASE_URL}/health-check`);
@@ -103,7 +103,7 @@ test.describe('HealthCheck Web App', () => {
     await page.goto(BASE_URL);
     
     // Click on Pricing link
-    await page.locator('text=Pricing').click();
+    await page.locator('a:has-text("Pricing")').click();
     
     // Check URL and content
     await expect(page).toHaveURL(`${BASE_URL}/pricing`);
@@ -116,7 +116,7 @@ test.describe('HealthCheck Web App', () => {
     await page.goto(BASE_URL);
     
     // Click on Disclaimer link in footer
-    await page.locator('text=Disclaimer').click();
+    await page.locator('a:has-text("Disclaimer")').click();
     
     // Check URL and content
     await expect(page).toHaveURL(`${BASE_URL}/disclaimer`);
