@@ -1,18 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toKg, toCm, fromKg, fromCm } from "@/lib/units";
+import { useHealthCheckStore } from "@/lib/store";
 import type { 
-  Sex, 
   ActivityLevel, 
   GoalType, 
-  HeightUnit, 
-  WeightUnit, 
   HeightFeetInches 
 } from "@/types/health";
 
@@ -49,25 +47,38 @@ const goalTypes: { value: GoalType; label: string; description: string }[] = [
 
 export function HealthCheckForm() {
   const router = useRouter();
-  const [currentStep, setCurrentStep] = useState(0);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [hasHydratedFromParams, setHasHydratedFromParams] = useState(false);
 
-  // Step 1: Basics
-  const [sex, setSex] = useState<Sex>("male");
-  const [age, setAge] = useState<number>(30);
-  const [heightUnit, setHeightUnit] = useState<HeightUnit>("cm");
-  const [weightUnit, setWeightUnit] = useState<WeightUnit>("kg");
-  const [heightCm, setHeightCm] = useState<number>(175);
-  const [heightFeet, setHeightFeet] = useState<number>(5);
-  const [heightInches, setHeightInches] = useState<number>(9);
-  const [weightKg, setWeightKg] = useState<number>(70);
+  // Zustand store
+  const {
+    // State
+    sex, age, heightUnit, weightUnit, heightCm, heightFeet, heightInches, weightKg,
+    activityLevel, goalType, weeklyRateKg, currentStep,
+    // Actions
+    setSex, setAge, setHeightUnit, setWeightUnit, setHeightCm, setHeightFeet, 
+    setHeightInches, setWeightKg, setActivityLevel, setGoalType, setWeeklyRateKg, 
+    setCurrentStep, hydrateFromParams
+  } = useHealthCheckStore();
 
-  // Step 2: Activity
-  const [activityLevel, setActivityLevel] = useState<ActivityLevel>("moderately_active");
-
-  // Step 3: Goal
-  const [goalType, setGoalType] = useState<GoalType>("maintain");
-  const [weeklyRateKg, setWeeklyRateKg] = useState<number>(0.5);
+  // Hydrate from URL params on mount (only once)
+  useEffect(() => {
+    if (!hasHydratedFromParams && typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      
+      // Check if we have any relevant params
+      const hasRelevantParams = urlParams.has('height') || urlParams.has('weight') || 
+                                urlParams.has('age') || urlParams.has('sex') || 
+                                urlParams.has('activityLevel') || urlParams.has('goalType');
+      
+      if (hasRelevantParams) {
+        hydrateFromParams(urlParams);
+        // If we came from results, start at review step
+        setCurrentStep(3);
+      }
+      setHasHydratedFromParams(true);
+    }
+  }, [hasHydratedFromParams, hydrateFromParams, setCurrentStep]);
 
   // Helper functions
   const getHeightInCm = (): number => {
