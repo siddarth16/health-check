@@ -110,8 +110,7 @@ export default function ResultsPage({ searchParams }: ResultsPageProps) {
               Your Health Check Results
             </h1>
             <p className="text-lg text-muted-foreground">
-              Based on your information: {params.sex === "male" ? "Male" : "Female"}, {params.age} years old, 
-              {activityLabels[params.activityLevel as ActivityLevel].toLowerCase()} lifestyle
+              Based on your information: {params.sex === "male" ? "Male" : "Female"}, {params.age} years old, {activityLabels[params.activityLevel as ActivityLevel].toLowerCase()} lifestyle
             </p>
           </div>
           <ShareActions />

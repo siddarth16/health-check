@@ -80,6 +80,39 @@ export function HealthCheckForm() {
     }
   }, [hasHydratedFromParams, hydrateFromParams, setCurrentStep]);
 
+  // Clear validation errors when values become valid
+  useEffect(() => {
+    const newErrors = { ...errors };
+    
+    // Clear age error if age becomes valid
+    if (age >= 10 && age <= 120 && errors.age) {
+      delete newErrors.age;
+    }
+    
+    // Clear height error if height becomes valid
+    const heightInCm = getHeightInCm();
+    if (heightInCm >= 50 && heightInCm <= 300 && errors.height) {
+      delete newErrors.height;
+    }
+    
+    // Clear weight error if weight becomes valid
+    const weightInKg = getWeightInKg();
+    if (weightInKg >= 20 && weightInKg <= 300 && errors.weight) {
+      delete newErrors.weight;
+    }
+    
+    // Clear sex error if sex is selected
+    if (sex && errors.sex) {
+      delete newErrors.sex;
+    }
+    
+    // Only update if errors actually changed
+    if (Object.keys(newErrors).length !== Object.keys(errors).length || 
+        Object.keys(newErrors).some(key => newErrors[key] !== errors[key])) {
+      setErrors(newErrors);
+    }
+  }, [age, heightCm, heightFeet, heightInches, weightKg, sex, errors, getHeightInCm, getWeightInKg]);
+
   // Helper functions
   const getHeightInCm = (): number => {
     if (heightUnit === "cm") {
@@ -430,9 +463,7 @@ export function HealthCheckForm() {
                 <ul className="text-sm text-muted-foreground space-y-1">
                   <li>Activity: {activityLevels.find(a => a.value === activityLevel)?.label}</li>
                   <li>Goal: {goalTypes.find(g => g.value === goalType)?.label}</li>
-                  {goalType !== "maintain" && (
-                    <li>Rate: {weeklyRateKg} kg/week</li>
-                  )}
+                  <li>Rate: {goalType === "maintain" ? "Maintain weight" : `${weeklyRateKg} kg/week`}</li>
                 </ul>
               </div>
             </div>

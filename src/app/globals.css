@@ -119,6 +119,42 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Custom slider styling for macro calculator */
+  .slider-thumb {
+    background: transparent;
+  }
+
+  .slider-thumb::-webkit-slider-thumb {
+    appearance: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: hsl(var(--primary));
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .slider-thumb::-moz-range-thumb {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: hsl(var(--primary));
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .slider-thumb::-webkit-slider-thumb:hover {
+    background: hsl(var(--primary) / 0.9);
+    transform: scale(1.1);
+  }
+
+  .slider-thumb::-moz-range-thumb:hover {
+    background: hsl(var(--primary) / 0.9);
+    transform: scale(1.1);
+  }
 }
 
 /* Print Styles for Clean A4 Layout */

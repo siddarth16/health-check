@@ -177,7 +177,7 @@ export function MacrosCalculator() {
                   max="100"
                   value={carbsPct}
                   onChange={(e) => adjustPercentages(Number(e.target.value), 'carbs')}
-                  className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                  className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb"
                   style={{
                     background: `linear-gradient(to right, hsl(var(--primary)) 0%, hsl(var(--primary)) ${carbsPct}%, #e2e8f0 ${carbsPct}%, #e2e8f0 100%)`
                   }}
@@ -206,7 +206,7 @@ export function MacrosCalculator() {
                   max="100"
                   value={proteinPct}
                   onChange={(e) => adjustPercentages(Number(e.target.value), 'protein')}
-                  className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                  className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb"
                   style={{
                     background: `linear-gradient(to right, hsl(var(--primary)) 0%, hsl(var(--primary)) ${proteinPct}%, #e2e8f0 ${proteinPct}%, #e2e8f0 100%)`
                   }}
@@ -235,7 +235,7 @@ export function MacrosCalculator() {
                   max="100"
                   value={fatPct}
                   onChange={(e) => adjustPercentages(Number(e.target.value), 'fat')}
-                  className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                  className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb"
                   style={{
                     background: `linear-gradient(to right, hsl(var(--primary)) 0%, hsl(var(--primary)) ${fatPct}%, #e2e8f0 ${fatPct}%, #e2e8f0 100%)`
                   }}
