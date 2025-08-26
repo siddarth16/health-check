@@ -40,7 +40,7 @@ export default function CalorieCalculatorPage() {
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
               <span className="text-foreground">Calorie</span>{" "}
-              <span className="text-transparent bg-gradient-to-r from-neon-secondary to-neon-purple bg-clip-text">
+              <span className="text-neon-secondary">
                 Calculator
               </span>
             </h1>

@@ -121,6 +121,21 @@ export function BMICalculator() {
     }
   };
 
+  const getBMICategoryDotColor = (category: string) => {
+    switch (category) {
+      case "underweight":
+        return "bg-destructive";
+      case "normal":
+        return "bg-neon";
+      case "overweight":
+        return "bg-yellow-500";
+      case "obese":
+        return "bg-destructive";
+      default:
+        return "bg-neon";
+    }
+  };
+
   return (
     <div className="space-y-8">
       <Card className="border-border/50 bg-card/80 backdrop-blur-sm hover:border-neon/30 transition-all duration-300">
@@ -244,10 +259,10 @@ export function BMICalculator() {
               <div className="p-4 rounded-xl bg-gradient-to-br from-neon-secondary/10 to-neon-purple/5 border border-neon-secondary/20">
                 <strong className="text-foreground text-lg block mb-3">BMI Categories:</strong>
                 <ul className="space-y-2">
-                  <li className="flex items-center"><span className="w-2 h-2 rounded-full bg-destructive mr-3"></span>Underweight: Below 18.5</li>
-                  <li className="flex items-center"><span className="w-2 h-2 rounded-full bg-neon mr-3"></span>Normal: 18.5-24.9</li>
-                  <li className="flex items-center"><span className="w-2 h-2 rounded-full bg-secondary mr-3"></span>Overweight: 25-29.9</li>
-                  <li className="flex items-center"><span className="w-2 h-2 rounded-full bg-destructive mr-3"></span>Obese: 30 and above</li>
+                  <li className="flex items-center"><span className={`w-2 h-2 rounded-full mr-3 ${result && result.category === 'underweight' ? 'bg-destructive shadow-lg' : 'bg-destructive/50'}`}></span>Underweight: Below 18.5</li>
+                  <li className="flex items-center"><span className={`w-2 h-2 rounded-full mr-3 ${result && result.category === 'normal' ? 'bg-neon shadow-lg' : 'bg-neon/50'}`}></span>Normal: 18.5-24.9</li>
+                  <li className="flex items-center"><span className={`w-2 h-2 rounded-full mr-3 ${result && result.category === 'overweight' ? 'bg-yellow-500 shadow-lg' : 'bg-yellow-500/50'}`}></span>Overweight: 25-29.9</li>
+                  <li className="flex items-center"><span className={`w-2 h-2 rounded-full mr-3 ${result && result.category === 'obese' ? 'bg-destructive shadow-lg' : 'bg-destructive/50'}`}></span>Obese: 30 and above</li>
                 </ul>
               </div>
               <div className="p-4 rounded-xl bg-gradient-to-br from-neon-green/10 to-neon/5 border border-neon-green/20">

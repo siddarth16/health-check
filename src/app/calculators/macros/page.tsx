@@ -40,7 +40,7 @@ export default function MacroCalculatorPage() {
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
               <span className="text-foreground">Macro</span>{" "}
-              <span className="text-transparent bg-gradient-to-r from-neon-green to-neon bg-clip-text">
+              <span className="text-neon-green">
                 Calculator
               </span>
             </h1>

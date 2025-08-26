@@ -33,18 +33,21 @@ export default function ResultsPage({ searchParams }: ResultsPageProps) {
 
   if (!parseResult.success) {
     return (
-      <div className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
-        <div className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-            Results
-          </h1>
-          <div className="bg-muted/50 rounded-lg p-8 text-center">
-            <p className="text-xl text-muted-foreground">
-              Invalid or missing health check data.
-            </p>
-            <p className="text-sm text-muted-foreground mt-4">
-              Please complete the <a href="/health-check" className="text-primary hover:underline">health check form</a> to view your personalized results.
-            </p>
+      <div className="min-h-screen bg-background">
+        <div className="container mx-auto px-4 md:px-8 lg:px-16 py-16 md:py-24 max-w-6xl">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+              <span className="text-foreground">Results</span>{" "}
+              <span className="text-neon">Not Found</span>
+            </h1>
+            <div className="bg-card/50 border border-border/50 backdrop-blur-sm rounded-xl p-8 max-w-2xl mx-auto">
+              <p className="text-xl text-muted-foreground mb-4">
+                Invalid or missing health check data.
+              </p>
+              <p className="text-base text-muted-foreground">
+                Please complete the <a href="/health-check" className="text-neon hover:text-neon-green transition-colors font-medium underline">health check form</a> to view your personalized results.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -102,20 +105,22 @@ export default function ResultsPage({ searchParams }: ResultsPageProps) {
   };
 
   return (
-    <div className="container mx-auto px-4 py-16 md:py-24 max-w-6xl">
-      <div className="mb-8">
-        <div className="flex items-start justify-between">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-              Your Health Check Results
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              Based on your information: {params.sex === "male" ? "Male" : "Female"}, {params.age} years old, {activityLabels[params.activityLevel as ActivityLevel].toLowerCase()} lifestyle
-            </p>
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 md:px-8 lg:px-16 py-16 md:py-24 max-w-6xl">
+        <div className="mb-12">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+            <div>
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+                <span className="text-foreground">Your Health Check</span>{" "}
+                <span className="text-neon">Results</span>
+              </h1>
+              <p className="text-lg md:text-xl text-muted-foreground">
+                Based on your information: {params.sex === "male" ? "Male" : "Female"}, {params.age} years old, {activityLabels[params.activityLevel as ActivityLevel].toLowerCase()} lifestyle
+              </p>
+            </div>
+            <ShareActions />
           </div>
-          <ShareActions />
         </div>
-      </div>
 
       <div id="results-content" className="space-y-6">
         {/* Key Metrics Strip */}
@@ -248,26 +253,31 @@ export default function ResultsPage({ searchParams }: ResultsPageProps) {
         </div>
 
         {/* Important Disclaimer */}
-        <Card className="border-amber-200 bg-amber-50/50">
+        <Card className="border-neon-secondary/30 bg-gradient-to-br from-neon-secondary/5 to-neon-purple/5 backdrop-blur-sm">
           <CardContent className="pt-6">
-            <div className="text-sm text-amber-800">
-              <p className="font-medium mb-2">Important Note:</p>
-              <p>
+            <div className="text-sm">
+              <p className="font-semibold mb-3 text-foreground flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-neon-secondary"></span>
+                Important Note:
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
                 These calculations are estimates based on general formulas and should not replace professional medical advice. 
                 Individual needs may vary based on genetics, health conditions, medications, and other factors. 
                 Please consult with a healthcare professional or registered dietitian for personalized guidance.
               </p>
-              <p className="mt-3">
+              <p className="mt-4">
                 <a 
                   href="/disclaimer" 
-                  className="text-amber-700 hover:text-amber-900 underline font-medium"
+                  className="text-neon-secondary hover:text-neon transition-colors font-medium inline-flex items-center gap-2"
                 >
-                  Read our full medical disclaimer →
+                  Read our full medical disclaimer
+                  <span className="text-lg">→</span>
                 </a>
               </p>
             </div>
           </CardContent>
         </Card>
+      </div>
       </div>
     </div>
   );

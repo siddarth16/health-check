@@ -19,7 +19,7 @@ export default function Home() {
           <div className="space-y-8">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
               <span className="block text-foreground">Know your numbers.</span>
-              <span className="block text-transparent bg-gradient-to-r from-neon via-neon-secondary to-neon bg-clip-text text-glow-lg animate-glow">
+              <span className="block text-neon text-glow-lg animate-glow">
                 Plan your goal.
               </span>
             </h1>
@@ -34,7 +34,7 @@ export default function Home() {
               <Link href="/health-check">
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-neon to-neon-green hover:from-neon-green hover:to-neon text-background font-semibold px-8 py-4 text-lg rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-neon-lg group"
+                  className="bg-neon hover:bg-neon-green text-background font-semibold px-8 py-4 text-lg rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-neon-lg group border-0"
                   aria-label="Start your health assessment"
                 >
                   Get Started
@@ -72,7 +72,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* BMI Calculator Card */}
             <Link href="/calculators/bmi" className="group">
-              <div className="bg-card border border-border rounded-xl p-8 h-full transition-all duration-300 hover:border-neon/50 hover:shadow-neon hover:scale-105 hover:bg-card/80">
+              <div className="bg-card border border-border rounded-xl p-8 h-full transition-all duration-300 hover:border-neon/50 hover:shadow-[0_0_30px_oklch(0.70_0.25_166_/_0.3)] hover:scale-105 hover:bg-card/80">
                 <div className="flex flex-col items-center text-center space-y-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-neon/20 to-neon-green/20 rounded-xl flex items-center justify-center border border-neon/30 group-hover:border-neon/70 transition-colors">
                     <Calculator className="w-8 h-8 text-neon" />

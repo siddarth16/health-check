@@ -53,7 +53,7 @@ export default function PricingPage() {
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
             <span className="text-foreground">Choose Your</span>{" "}
-            <span className="text-transparent bg-gradient-to-r from-neon to-neon-secondary bg-clip-text">
+            <span className="text-neon">
               Plan
             </span>
           </h1>
