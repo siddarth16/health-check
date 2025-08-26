@@ -16,7 +16,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = createMetadata({});
+export const metadata: Metadata = createMetadata({
+  title: "Know your numbers. Plan your goal.",
+  description: "Health calculators and tools for better wellness planning.",
+  path: "/",
+});
 
 export default function RootLayout({
   children,

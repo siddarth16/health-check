@@ -54,6 +54,12 @@ const config: Config = {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        neon: {
+          DEFAULT: "hsl(var(--neon))",
+          secondary: "hsl(var(--neon-secondary))",
+          purple: "hsl(var(--neon-purple))",
+          green: "hsl(var(--neon-green))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -63,6 +69,24 @@ const config: Config = {
       fontFeatureSettings: {
         'tabular-nums': '"tnum"',
       },
+      boxShadow: {
+        'neon': '0 0 20px var(--neon-glow)',
+        'neon-lg': '0 0 30px var(--neon-glow)',
+        'neon-xl': '0 0 40px var(--neon-glow)',
+      },
+      animation: {
+        'glow': 'glow 2s ease-in-out infinite alternate',
+      },
+      keyframes: {
+        glow: {
+          'from': { 
+            'text-shadow': '0 0 20px var(--neon-glow), 0 0 30px var(--neon-glow), 0 0 40px var(--neon-glow)'
+          },
+          'to': { 
+            'text-shadow': '0 0 30px var(--neon-glow), 0 0 40px var(--neon-glow), 0 0 50px var(--neon-glow)'
+          }
+        }
+      }
     },
   },
   plugins: [],

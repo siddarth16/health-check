@@ -35,21 +35,26 @@ export default function MacroCalculatorPage() {
   return (
     <>
       <FaqJsonLd faqs={macrosFaqs} />
-      <div className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
-        <div className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-            Macro Calculator
-          </h1>
-          <p className="text-xl text-muted-foreground leading-relaxed">
-            Macronutrients (macros) are the three main nutrients your body needs in large amounts: 
-            protein, carbohydrates, and fats. This calculator helps you determine the optimal 
-            distribution of these macros based on your caloric needs, fitness goals, and dietary 
-            preferences. Proper macro balance supports muscle growth, fat loss, energy levels, 
-            and overall health.
-          </p>
+      <div className="min-h-screen bg-background">
+        <div className="container mx-auto px-4 md:px-8 lg:px-16 py-16 md:py-24 max-w-6xl">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+              <span className="text-foreground">Macro</span>{" "}
+              <span className="text-transparent bg-gradient-to-r from-neon-green to-neon bg-clip-text">
+                Calculator
+              </span>
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+              Macronutrients (macros) are the three main nutrients your body needs in large amounts: 
+              protein, carbohydrates, and fats. This calculator helps you determine the optimal 
+              distribution of these macros based on your caloric needs, fitness goals, and dietary 
+              preferences. Proper macro balance supports muscle growth, fat loss, energy levels, 
+              and overall health.
+            </p>
+          </div>
+          
+          <MacrosCalculator />
         </div>
-        
-        <MacrosCalculator />
       </div>
     </>
   );

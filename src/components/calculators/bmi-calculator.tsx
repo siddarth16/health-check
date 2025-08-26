@@ -122,104 +122,108 @@ export function BMICalculator() {
   };
 
   return (
-    <div className="space-y-6">
-      <Card>
-        <CardHeader>
-          <CardTitle>BMI Calculator</CardTitle>
+    <div className="space-y-8">
+      <Card className="border-border/50 bg-card/80 backdrop-blur-sm hover:border-neon/30 transition-all duration-300">
+        <CardHeader className="pb-4">
+          <CardTitle className="text-2xl text-foreground">BMI Calculator</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-6">
           {/* Height Input */}
-          <div className="space-y-2">
+          <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <label className="text-sm font-medium">Height</label>
+              <label className="text-base font-medium text-foreground">Height</label>
               <Button
                 variant="outline"
                 size="sm"
                 onClick={toggleHeightUnit}
                 type="button"
+                className="border-border hover:border-neon hover:text-neon transition-all duration-200"
               >
                 {heightUnit === "cm" ? "Switch to ft/in" : "Switch to cm"}
               </Button>
             </div>
             
             {heightUnit === "cm" ? (
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <Input
                   type="number"
                   value={heightCm}
                   onChange={(e) => setHeightCm(Number(e.target.value))}
                   placeholder="175"
                   step="0.1"
+                  className="bg-input border-border focus:border-neon focus:ring-neon/20 text-foreground"
                 />
-                <span className="flex items-center text-sm text-muted-foreground">cm</span>
+                <span className="flex items-center text-base text-muted-foreground min-w-[2rem]">cm</span>
               </div>
             ) : (
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <Input
                   type="number"
                   value={heightFeet}
                   onChange={(e) => setHeightFeet(Number(e.target.value))}
                   placeholder="5"
-                  className="flex-1"
+                  className="flex-1 bg-input border-border focus:border-neon focus:ring-neon/20 text-foreground"
                 />
-                <span className="flex items-center text-sm text-muted-foreground">ft</span>
+                <span className="flex items-center text-base text-muted-foreground">ft</span>
                 <Input
                   type="number"
                   value={heightInches}
                   onChange={(e) => setHeightInches(Number(e.target.value))}
                   placeholder="9"
                   step="0.1"
-                  className="flex-1"
+                  className="flex-1 bg-input border-border focus:border-neon focus:ring-neon/20 text-foreground"
                 />
-                <span className="flex items-center text-sm text-muted-foreground">in</span>
+                <span className="flex items-center text-base text-muted-foreground">in</span>
               </div>
             )}
             {errors.height && (
-              <p className="text-sm text-destructive">{errors.height}</p>
+              <p className="text-sm text-destructive font-medium">{errors.height}</p>
             )}
           </div>
 
           {/* Weight Input */}
-          <div className="space-y-2">
+          <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <label className="text-sm font-medium">Weight</label>
+              <label className="text-base font-medium text-foreground">Weight</label>
               <Button
                 variant="outline"
                 size="sm"
                 onClick={toggleWeightUnit}
                 type="button"
+                className="border-border hover:border-neon hover:text-neon transition-all duration-200"
               >
                 {weightUnit === "kg" ? "Switch to lb" : "Switch to kg"}
               </Button>
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               <Input
                 type="number"
                 value={weightKg}
                 onChange={(e) => setWeightKg(Number(e.target.value))}
                 placeholder={weightUnit === "kg" ? "70" : "154"}
                 step="0.1"
+                className="bg-input border-border focus:border-neon focus:ring-neon/20 text-foreground"
               />
-              <span className="flex items-center text-sm text-muted-foreground">{weightUnit}</span>
+              <span className="flex items-center text-base text-muted-foreground min-w-[3rem]">{weightUnit}</span>
             </div>
             {errors.weight && (
-              <p className="text-sm text-destructive">{errors.weight}</p>
+              <p className="text-sm text-destructive font-medium">{errors.weight}</p>
             )}
           </div>
 
           {/* Results */}
           {result && (
-            <div className="pt-4 border-t">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">{result.bmi}</div>
-                  <div className="text-sm text-muted-foreground">BMI</div>
+            <div className="pt-6 border-t border-border/30">
+              <div className="grid grid-cols-2 gap-6">
+                <div className="text-center p-4 rounded-xl bg-gradient-to-br from-neon/10 to-neon-green/5 border border-neon/20">
+                  <div className="text-4xl font-bold text-neon text-glow">{result.bmi}</div>
+                  <div className="text-sm text-muted-foreground mt-2">Your BMI</div>
                 </div>
-                <div className="text-center">
-                  <Badge variant={getBMICategoryColor(result.category)} className="text-sm">
+                <div className="text-center p-4 rounded-xl bg-card/50 border border-border/50">
+                  <Badge variant={getBMICategoryColor(result.category)} className="text-base px-4 py-2 font-semibold">
                     {result.category.charAt(0).toUpperCase() + result.category.slice(1)}
                   </Badge>
-                  <div className="text-sm text-muted-foreground mt-1">Category</div>
+                  <div className="text-sm text-muted-foreground mt-2">Category</div>
                 </div>
               </div>
             </div>
@@ -228,30 +232,30 @@ export function BMICalculator() {
       </Card>
 
       {/* SEO Text Block */}
-      <Card>
+      <Card className="border-border/50 bg-card/60 backdrop-blur-sm">
         <CardContent className="pt-6">
-          <h3 className="text-lg font-semibold mb-3">Understanding BMI</h3>
-          <div className="space-y-2 text-sm text-muted-foreground">
-            <p>
+          <h3 className="text-xl font-semibold mb-4 text-foreground">Understanding BMI</h3>
+          <div className="space-y-4 text-base text-muted-foreground">
+            <p className="leading-relaxed">
               Body Mass Index (BMI) is a measure of body fat based on height and weight. 
               It&apos;s a useful screening tool but doesn&apos;t directly measure body fat percentage.
             </p>
-            <div className="grid grid-cols-2 gap-4 mt-4">
-              <div>
-                <strong>BMI Categories:</strong>
-                <ul className="mt-1 space-y-1">
-                  <li>• Underweight: Below 18.5</li>
-                  <li>• Normal: 18.5-24.9</li>
-                  <li>• Overweight: 25-29.9</li>
-                  <li>• Obese: 30 and above</li>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+              <div className="p-4 rounded-xl bg-gradient-to-br from-neon-secondary/10 to-neon-purple/5 border border-neon-secondary/20">
+                <strong className="text-foreground text-lg block mb-3">BMI Categories:</strong>
+                <ul className="space-y-2">
+                  <li className="flex items-center"><span className="w-2 h-2 rounded-full bg-destructive mr-3"></span>Underweight: Below 18.5</li>
+                  <li className="flex items-center"><span className="w-2 h-2 rounded-full bg-neon mr-3"></span>Normal: 18.5-24.9</li>
+                  <li className="flex items-center"><span className="w-2 h-2 rounded-full bg-secondary mr-3"></span>Overweight: 25-29.9</li>
+                  <li className="flex items-center"><span className="w-2 h-2 rounded-full bg-destructive mr-3"></span>Obese: 30 and above</li>
                 </ul>
               </div>
-              <div>
-                <strong>Important Notes:</strong>
-                <ul className="mt-1 space-y-1">
-                  <li>• BMI may not reflect muscle mass</li>
-                  <li>• Results may vary by age and sex</li>
-                  <li>• Consult healthcare providers for guidance</li>
+              <div className="p-4 rounded-xl bg-gradient-to-br from-neon-green/10 to-neon/5 border border-neon-green/20">
+                <strong className="text-foreground text-lg block mb-3">Important Notes:</strong>
+                <ul className="space-y-2">
+                  <li className="flex items-center"><span className="w-2 h-2 rounded-full bg-neon-green mr-3"></span>BMI may not reflect muscle mass</li>
+                  <li className="flex items-center"><span className="w-2 h-2 rounded-full bg-neon-green mr-3"></span>Results may vary by age and sex</li>
+                  <li className="flex items-center"><span className="w-2 h-2 rounded-full bg-neon-green mr-3"></span>Consult healthcare providers for guidance</li>
                 </ul>
               </div>
             </div>

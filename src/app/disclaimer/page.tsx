@@ -9,21 +9,24 @@ export const metadata = createMetadata({
 
 export default function DisclaimerPage() {
   return (
-    <div className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-          Disclaimer
-        </h1>
-        <p className="text-xl text-muted-foreground">
-          Important information about our health calculators
-        </p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 md:px-8 lg:px-16 py-16 md:py-24 max-w-5xl">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+            <span className="text-transparent bg-gradient-to-r from-neon-secondary to-neon-purple bg-clip-text">
+              Disclaimer
+            </span>
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground">
+            Important information about our health calculators
+          </p>
+        </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-2xl">Medical Disclaimer</CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-gray max-w-none dark:prose-invert">
+        <Card className="border-border/50 bg-card/80 backdrop-blur-sm">
+          <CardHeader>
+            <CardTitle className="text-2xl md:text-3xl text-foreground">Medical Disclaimer</CardTitle>
+          </CardHeader>
+          <CardContent className="prose prose-gray max-w-none dark:prose-invert text-base">
           <p className="text-muted-foreground leading-relaxed">
             The information provided by HealthCheck and its calculators is for 
             educational purposes only and should not be considered as medical advice, 
@@ -124,7 +127,8 @@ export default function DisclaimerPage() {
             <p>Last updated: August 2024</p>
           </div>
         </CardContent>
-      </Card>
+        </Card>
+      </div>
     </div>
   );
 }

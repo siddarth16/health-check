@@ -35,21 +35,26 @@ export default function BMICalculatorPage() {
   return (
     <>
       <FaqJsonLd faqs={bmiFaqs} />
-      <div className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
-        <div className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-            BMI Calculator
-          </h1>
-          <p className="text-xl text-muted-foreground leading-relaxed">
-            Body Mass Index (BMI) is a simple calculation using a person&apos;s height and weight. 
-            The formula is BMI = kg/m² where kg is a person&apos;s weight in kilograms and m² is 
-            their height in metres squared. BMI is used to categorize weight status and assess 
-            potential health risks associated with being underweight, normal weight, overweight, 
-            or obese.
-          </p>
+      <div className="min-h-screen bg-background">
+        <div className="container mx-auto px-4 md:px-8 lg:px-16 py-16 md:py-24 max-w-6xl">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+              <span className="text-foreground">BMI</span>{" "}
+              <span className="text-transparent bg-gradient-to-r from-neon to-neon-green bg-clip-text">
+                Calculator
+              </span>
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+              Body Mass Index (BMI) is a simple calculation using a person&apos;s height and weight. 
+              The formula is BMI = kg/m² where kg is a person&apos;s weight in kilograms and m² is 
+              their height in metres squared. BMI is used to categorize weight status and assess 
+              potential health risks associated with being underweight, normal weight, overweight, 
+              or obese.
+            </p>
+          </div>
+          
+          <BMICalculator />
         </div>
-        
-        <BMICalculator />
       </div>
     </>
   );

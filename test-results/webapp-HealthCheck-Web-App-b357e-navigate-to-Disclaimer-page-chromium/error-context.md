@@ -1,0 +1,61 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "HealthCheck" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=e5]:
+        - link "Home" [ref=e6] [cursor=pointer]:
+          - /url: /
+        - button "Calculators" [ref=e7]:
+          - text: Calculators
+          - img
+        - link "Health Check" [ref=e8] [cursor=pointer]:
+          - /url: /health-check
+        - link "Pricing" [ref=e9] [cursor=pointer]:
+          - /url: /pricing
+  - main [ref=e10]:
+    - generic [ref=e11]:
+      - generic [ref=e12]:
+        - heading "Disclaimer" [level=1] [ref=e13]
+        - paragraph [ref=e14]: Important information about our health calculators
+      - generic [ref=e15]:
+        - generic [ref=e17]: Medical Disclaimer
+        - generic [ref=e18]:
+          - paragraph [ref=e19]: The information provided by HealthCheck and its calculators is for educational purposes only and should not be considered as medical advice, diagnosis, or treatment recommendations. Our BMI, calorie, and macro calculators provide general estimates based on standard formulas and should not replace professional medical consultation.
+          - generic [ref=e20]:
+            - generic [ref=e21]:
+              - heading "Medical Disclaimer" [level=3] [ref=e22]
+              - paragraph [ref=e23]: The calculations and recommendations provided are general estimates and may not be appropriate for everyone. Individual health needs vary significantly based on medical history, current health conditions, medications, age, pregnancy status, metabolic disorders, and other factors. These tools should never replace professional medical advice.
+            - generic [ref=e24]:
+              - heading "Calculator Limitations" [level=3] [ref=e25]
+              - paragraph [ref=e26]: Our calculators use established scientific formulas (such as the Mifflin-St Jeor equation for BMR) that provide reasonable estimates for most adults. However, these formulas may be less accurate for certain populations including athletes with high muscle mass, elderly individuals, those with metabolic conditions, or people taking medications that affect metabolism.
+            - generic [ref=e27]:
+              - heading "Consult Healthcare Professionals" [level=3] [ref=e28]
+              - paragraph [ref=e29]: Before making any significant changes to your diet, exercise routine, or health regimen based on our calculators, please consult with qualified healthcare professionals, including your physician, registered dietitian, or certified fitness trainer. This is especially important if you have pre-existing health conditions, take medications, are pregnant or nursing, or have a history of eating disorders.
+            - generic [ref=e30]:
+              - heading "No Liability & Warranty" [level=3] [ref=e31]
+              - paragraph [ref=e32]: While we strive for accuracy in our calculations and educational content, we make no warranties about the completeness, reliability, or accuracy of the information provided. HealthCheck, its creators, and affiliates are not liable for any damages or health issues that may result from using this information. Use of our calculators is at your own risk.
+            - generic [ref=e33]:
+              - heading "Emergency Situations" [level=3] [ref=e34]
+              - paragraph [ref=e35]: If you have a medical emergency, please contact your local emergency services immediately (such as 911 in the US, 999 in the UK, or 112 in Europe). Our calculators are not intended for emergency health situations or acute medical conditions.
+            - generic [ref=e36]:
+              - heading "Special Populations" [level=3] [ref=e37]
+              - paragraph [ref=e38]: These calculators are designed for healthy adults aged 18-65. They may not be appropriate for children, adolescents, elderly individuals, pregnant or breastfeeding women, competitive athletes, or individuals with medical conditions such as diabetes, eating disorders, thyroid conditions, or other metabolic disorders.
+            - generic [ref=e39]:
+              - heading "Data Privacy" [level=3] [ref=e40]
+              - paragraph [ref=e41]: We do not store or transmit your personal health data entered into our calculators. All calculations are performed in your browser for privacy. However, we recommend not using these tools on shared or public computers if privacy is a concern.
+          - paragraph [ref=e43]:
+            - strong [ref=e44]: "Important:"
+            - text: Your health is unique to you. These tools provide educational starting points for discussions with healthcare professionals who can provide personalized advice based on your complete health picture, medical history, and individual circumstances. Never ignore professional medical advice or delay seeking treatment because of information from this website.
+          - paragraph [ref=e46]: "Last updated: August 2024"
+  - contentinfo [ref=e47]:
+    - generic [ref=e49]:
+      - paragraph [ref=e50]: © 2024 HealthCheck. All rights reserved.
+      - navigation [ref=e51]:
+        - link "Disclaimer" [active] [ref=e52] [cursor=pointer]:
+          - /url: /disclaimer
+  - alert [ref=e53]: Disclaimer | HealthCheck
+```
