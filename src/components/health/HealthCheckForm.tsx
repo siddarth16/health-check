@@ -80,6 +80,23 @@ export function HealthCheckForm() {
     }
   }, [hasHydratedFromParams, hydrateFromParams, setCurrentStep]);
 
+  // Helper functions
+  const getHeightInCm = (): number => {
+    if (heightUnit === "cm") {
+      return heightCm;
+    } else {
+      return toCm({ feet: heightFeet, inches: heightInches }, "ft_in");
+    }
+  };
+
+  const getWeightInKg = (): number => {
+    if (weightUnit === "kg") {
+      return weightKg;
+    } else {
+      return toKg(weightKg, "lb");
+    }
+  };
+
   // Clear validation errors when values become valid
   useEffect(() => {
     const newErrors = { ...errors };
@@ -111,24 +128,7 @@ export function HealthCheckForm() {
         Object.keys(newErrors).some(key => newErrors[key] !== errors[key])) {
       setErrors(newErrors);
     }
-  }, [age, heightCm, heightFeet, heightInches, weightKg, sex, errors, getHeightInCm, getWeightInKg]);
-
-  // Helper functions
-  const getHeightInCm = (): number => {
-    if (heightUnit === "cm") {
-      return heightCm;
-    } else {
-      return toCm({ feet: heightFeet, inches: heightInches }, "ft_in");
-    }
-  };
-
-  const getWeightInKg = (): number => {
-    if (weightUnit === "kg") {
-      return weightKg;
-    } else {
-      return toKg(weightKg, "lb");
-    }
-  };
+  }, [age, heightCm, heightFeet, heightInches, weightKg, sex, errors, heightUnit, weightUnit]);
 
   const toggleHeightUnit = () => {
     const currentHeightCm = getHeightInCm();
